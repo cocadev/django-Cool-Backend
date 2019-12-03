@@ -1,14 +1,12 @@
-# ![Django DRF Example App](project-logo.png)
 
-> ### Example Django DRF codebase containing real world examples (CRUD, auth, advanced patterns, etc) that adheres to the [RealWorld](https://github.com/gothinkster/realworld-example-apps) API spec.
+> ### Example Django DRF codebase containing real world examples (CRUD, auth, advanced patterns, etc) that adheres to the [RealWorld] API spec.
 
-<a href="https://thinkster.io/tutorials/django-json-api" target="_blank"><img width="454" src="https://raw.githubusercontent.com/gothinkster/realworld/master/media/learn-btn-hr.png" /></a>
 
 This repo is functionality complete — PR's and issues welcome!
 
 ## Installation
 
-1. Clone this repository: `git clone git@github.com:gothinkster/productionready-django-api.git`.
+1. Clone this repository: `git clone https://github.com/funnyjerry/Django-Cool-Backend.git`.
 2. `cd` into `conduit-django`: `cd productionready-django-api`.
 3. Install [pyenv](https://github.com/yyuu/pyenv#installation).
 4. Install [pyenv-virtualenv](https://github.com/yyuu/pyenv-virtualenv#installation).
