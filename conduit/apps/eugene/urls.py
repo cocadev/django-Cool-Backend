@@ -1,7 +1,7 @@
 from django.urls import include, path
 
 from .views import (
-    get_countries, add_country
+    get_countries, add_country, detail_country
 )
 
 urlpatterns = [

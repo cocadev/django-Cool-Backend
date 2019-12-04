@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from rest_framework import status
 from .models import Country
 from .serializers import CountrySerializer
@@ -21,3 +22,13 @@ def add_country(request):
         serializer.save()
         return JsonResponse(serializer.data, status=status.HTTP_201_CREATED)
     return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['GET'])
+def detail_country(request, pk):
+    try:
+        project = Country.objects.get(pk=pk)
+    except Country.DoesNotExist:
+        return HttpResponse(status=status.HTTP_404_NOT_FOUND)
+    serializer = CountrySerializer(project)
+    return JsonResponse(serializer.data)
