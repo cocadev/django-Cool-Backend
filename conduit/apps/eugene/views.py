@@ -5,6 +5,7 @@ from .serializers import CountrySerializer
 from rest_framework.parsers import JSONParser
 from django.http.response import JsonResponse
 from rest_framework.decorators import api_view
+from .forms import CountryChangeForm
 
 
 @api_view(['GET'])
@@ -32,3 +33,28 @@ def detail_country(request, pk):
         return HttpResponse(status=status.HTTP_404_NOT_FOUND)
     serializer = CountrySerializer(project)
     return JsonResponse(serializer.data)
+
+
+@api_view(['PUT'])
+def update_country(request, pk):
+    try:
+        project = Country.objects.get(pk=pk)
+    except Country.DoesNotExist:
+        return HttpResponse(status=status.HTTP_404_NOT_FOUND)
+
+    form = CountryChangeForm(request.data or None, instance=project)
+
+    if form.is_valid():
+        form.save()
+        return JsonResponse(form.data)
+    return JsonResponse(form.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['DELETE'])
+def delete_country(request, pk):
+    try:
+        country = Country.objects.get(pk=pk)
+    except Country.DoesNotExist:
+        return HttpResponse(status=status.HTTP_404_NOT_FOUND)
+    country.delete()
+    return HttpResponse(status=status.HTTP_204_NO_CONTENT)
